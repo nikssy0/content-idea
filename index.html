@@ -1,1 +1,836 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Creator Hub — твой помощник в мире контента</title>
+
+<style>
+:root {
+  --bg: #fbf8f5;
+  --white: #ffffff;
+  --text: #1f1b22;
+  --muted: #706a73;
+  --purple: #9b72cf;
+  --purple-dark: #7046a8;
+  --purple-light: #eee4f8;
+  --pink: #f8e8ed;
+  --border: #ebe5e1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+header {
+  width: 100%;
+  padding: 18px 7%;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.login {
+  background: var(--purple-light);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero {
+  max-width: 1250px;
+  margin: auto;
+  padding: 90px 7% 70px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 9px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+}
+
+.hero h1 span {
+  color: var(--purple);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 560px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  border: none;
+  background: var(--purple);
+  color: white;
+  padding: 16px 25px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: var(--purple-dark);
+}
+
+.hero-visual {
+  min-height: 390px;
+  border-radius: 35px;
+  background: linear-gradient(135deg, #eadcf8, #f7e8ef);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-visual::after {
+  content: "CREATE • INSPIRE • GROW";
+  position: absolute;
+  bottom: 25px;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #5f5168;
+}
+
+.section {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 7% 80px;
+}
+
+.section-title {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.feature {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 22px;
+  min-height: 190px;
+  transition: 0.2s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+}
+
+.feature-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.feature h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.feature p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.generator {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 35px;
+  margin-top: 20px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.filter label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+}
+
+.result {
+  display: none;
+  margin-top: 25px;
+  padding: 28px;
+  background: var(--purple-light);
+  border-radius: 22px;
+}
+
+.result h3 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.result-item {
+  background: rgba(255,255,255,0.7);
+  padding: 15px;
+  border-radius: 14px;margin-bottom: 12px;
+}
+
+.ai-box {
+  background: linear-gradient(135deg, #2a2430, #513b66);
+  color: white;
+  border-radius: 30px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.ai-box h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.ai-box p {
+  color: #e5dce9;
+}
+
+.ai-list {
+  display: grid;
+  gap: 12px;
+}
+
+.ai-item {
+  background: rgba(255,255,255,0.1);
+  padding: 16px;
+  border-radius: 14px;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.article {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.article-image {
+  height: 150px;
+  background: linear-gradient(135deg, #f1e8fa, #f9e9ed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+}
+
+.article-content {
+  padding: 18px;
+}
+
+.article-tag {
+  font-size: 12px;
+  color: var(--purple-dark);
+  margin-bottom: 8px;
+}
+
+.article h3 {
+  font-size: 17px;
+}
+
+.cta {
+  background: linear-gradient(135deg, var(--purple), #c59be3);
+  color: white;
+  padding: 60px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.cta h2 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.cta p {
+  margin-bottom: 25px;
+}
+
+.cta .btn {
+  background: white;
+  color: var(--purple-dark);
+}
+
+footer {
+  margin-top: 80px;
+  padding: 35px 7%;
+  background: white;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+}
+
+@media (max-width: 1000px) {
+
+  nav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .articles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  header {
+    padding: 16px 20px;
+  }
+
+  .hero {
+    padding: 60px 20px;
+  }
+
+  .section {
+    padding: 20px 20px 60px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .features,
+  .filters,
+  .articles,
+  .ai-box {
+    grid-template-columns: 1fr;
+  }
+
+  .generator,
+  .ai-box,
+  .cta {
+    padding: 25px;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">🎬 Creator Hub ♡</div>
+
+  <nav>
+    <a href="#ideas">Идеи</a>
+    <a href="#design">Оформление</a>
+    <a href="#ai">AI-помощник</a>
+    <a href="#articles">Блогерская база</a>
+  </nav>
+
+  <button class="login">Войти</button>
+
+</header>
+
+
+<section class="hero">
+
+  <div>
+
+    <div class="badge">✨ ТВОЙ ПОМОЩНИК В МИРЕ КОНТЕНТА</div>
+
+    <h1>
+      Не знаешь,<br>
+      что снять <span>сегодня?</span>
+    </h1>
+
+    <p>
+      Идеи, сценарии, оформление аккаунта,
+      AI-инструменты и всё, что поможет тебе
+      развивать свой блог.
+    </p>
+
+    <button class="btn"
+      onclick="document.getElementById('ideas').scrollIntoView()">
+      Найти идею 🎬
+    </button>
+
+  </div>
+
+  <div class="hero-visual">
+    📱✨
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <h2 class="section-title">Всё для твоего блога ✨</h2>
+
+  <p class="section-subtitle">
+    Создавай, вдохновляйся и развивай свой блог в одном месте.
+  </p>
+
+  <div class="features">
+
+    <div class="feature">
+      <div class="feature-icon">💡</div>
+      <h3>Генератор идей</h3>
+      <p>Находи новые идеи для видео.</p>
+    </div>
+
+    <div class="feature" id="design">
+      <div class="feature-icon">🎨</div>
+      <h3>Оформление аккаунта</h3>
+      <p>Создай красивый профиль.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🤖</div>
+      <h3>AI-помощник</h3>
+      <p>Используй ИИ для своего блога.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">📚</div>
+      <h3>Блогерская база</h3>
+      <p>Полезные статьи и инструкции.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🛍️</div>
+      <h3>Шаблоны</h3>
+      <p>Готовые материалы для блогеров.</p>
+    </div>
+
+  </div></section>
+
+
+<section class="section" id="ideas">
+
+  <div class="generator">
+
+    <h2 class="section-title">✨ Найди идею для видео</h2>
+
+    <p class="section-subtitle">
+      Выбери параметры — и получи готовую идею.
+    </p>
+
+    <div class="filters">
+
+      <div class="filter">
+        <label>📱 Платформа</label>
+
+        <select id="platform">
+          <option>Instagram Reels</option>
+          <option>TikTok</option>
+          <option>YouTube Shorts</option>
+        </select>
+      </div>
+
+      <div class="filter">
+        <label>🎨 Твоя ниша</label>
+
+        <select id="niche">
+          <option value="lifestyle">Lifestyle</option>
+          <option value="beauty">Beauty</option>
+          <option value="books">Books</option>
+          <option value="fashion">Fashion</option>
+          <option value="fun">Юмор</option>
+        </select>
+      </div>
+
+      <div class="filter">
+        <label>👤 Показываешь лицо?</label>
+
+        <select>
+          <option>Да</option>
+          <option>Нет</option>
+          <option>Иногда</option>
+        </select>
+      </div>
+
+      <div class="filter">
+        <label>🏠 Где снимаешь?</label>
+
+        <select>
+          <option>Дома</option>
+          <option>На улице</option>
+          <option>Где угодно</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button class="btn" onclick="generateIdea()">
+      🎲 Получить идею
+    </button>
+
+
+    <div class="result" id="result">
+
+      <h3 id="ideaTitle"></h3>
+
+      <div class="result-item">
+        <strong>🪝 Хук:</strong>
+        <p id="hook"></p>
+      </div>
+
+      <div class="result-item">
+        <strong>📹 Что снять:</strong>
+        <p id="shots"></p>
+      </div>
+
+      <div class="result-item">
+        <strong>📝 Текст на видео:</strong>
+        <p id="videoText"></p>
+      </div>
+
+      <div class="result-item">
+        <strong>💬 Подпись:</strong>
+        <p id="caption"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="ai">
+
+  <div class="ai-box">
+
+    <div>
+      <h2>🤖 AI для блогера</h2>
+
+      <p>
+        Узнай, как использовать искусственный интеллект
+        для создания контента и развития своего блога.
+      </p>
+    </div>
+
+    <div class="ai-list">
+
+      <div class="ai-item">💡 Придумать идеи для видео</div>
+
+      <div class="ai-item">🎬 Написать сценарий</div>
+
+      <div class="ai-item">🪝 Создать цепляющий хук</div>
+
+      <div class="ai-item">📅 Сделать контент-план</div>
+
+      <div class="ai-item">🎨 Помочь оформить профиль</div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="articles">
+
+  <h2 class="section-title">Полезные статьи 📚</h2>
+
+  <p class="section-subtitle">
+    Всё, что нужно знать начинающему блогеру.
+  </p>
+
+  <div class="articles">
+
+    <div class="article">
+      <div class="article-image">🚀</div>
+
+      <div class="article-content">
+        <div class="article-tag">НАЧАЛО БЛОГА</div>
+        <h3>Как начать вести блог с нуля?</h3>
+      </div>
+    </div>
+
+
+    <div class="article">
+      <div class="article-image">📈</div>
+
+      <div class="article-content">
+        <div class="article-tag">ПРОДВИЖЕНИЕ</div>
+        <h3>Почему видео не набирают просмотры?</h3>
+      </div>
+    </div>
+
+
+    <div class="article">
+      <div class="article-image">🎬</div>
+
+      <div class="article-content">
+        <div class="article-tag">КОНТЕНТ</div>
+        <h3>Что такое хук и как его придумать?</h3>
+      </div>
+    </div>
+
+
+    <div class="article">
+      <div class="article-image">🤖</div>
+
+      <div class="article-content">
+        <div class="article-tag">AI</div>
+        <h3>Лучшие промты для блогера</h3>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="cta">
+
+    <h2>Начни создавать контент ✨</h2>
+
+    <p>
+      Идея для твоего следующего видео может появиться прямо сейчас.
+    </p>
+
+    <button class="btn"
+      onclick="document.getElementById('ideas').scrollIntoView()">
+      Найти идею 🎬</button>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <strong>🎬 Creator Hub ♡</strong>
+
+  <span>Создавай. Вдохновляй. Развивайся.</span>
+
+  <span>© 2026 Creator Hub</span>
+
+</footer>
+
+
+<script>
+
+const ideas = {
+
+  lifestyle: [
+
+    {
+      title: "Маленькие моменты моего дня ✨",
+      hook: "Иногда счастье выглядит вот так...",
+      shots: "Кофе → окно → прогулка → любимая вещь → вечер",
+      text: "Моя обычная жизнь, которую я когда-то мечтала иметь.",
+      caption: "Учусь замечать маленькие счастливые моменты 🤍"
+    },
+
+    {
+      title: "Романтизирую обычный день 🎬",
+      hook: "POV: ты решила почувствовать себя главной героиней",
+      shots: "Утро → сборы → дорога → красивые детали → вечер",
+      text: "Моя жизнь не идеальна, но она моя.",
+      caption: "Иногда нужно просто посмотреть на свою жизнь по-другому ✨"
+    }
+
+  ],
+
+  beauty: [
+
+    {
+      title: "Макияж, который меняет настроение 💄",
+      hook: "Я просто хотела сделать лёгкий макияж...",
+      shots: "До → глаза → детали → губы → финальный образ",
+      text: "Немного косметики — совершенно другое настроение.",
+      caption: "Какой макияж вы любите больше?"
+    }
+
+  ],
+
+  books: [
+
+    {
+      title: "Книга, в которую хочется переехать 📚",
+      hook: "Если бы книги были порталами...",
+      shots: "Книга → страницы → чай → уют → чтение",
+      text: "Я хочу жить внутри этой истории.",
+      caption: "В какую книгу вы бы переехали? 📖"
+    }
+
+  ],
+
+  fashion: [
+
+    {
+      title: "Одна вещь — три образа 👠",
+      hook: "Кто сказал, что эту вещь можно носить только так?",
+      shots: "Вещь → образ 1 → переход → образ 2 → образ 3",
+      text: "Одна вещь. Три совершенно разных настроения.",
+      caption: "1, 2 или 3?"
+    }
+
+  ],
+
+  fun: [
+
+    {
+      title: "Ожидание vs реальность 😂",
+      hook: "Когда в голове ты блогер-миллионник...",
+      shots: "Красивый план → реальность → несколько дублей → реакция",
+      text: "Главное — никому не показывать количество дублей.",
+      caption: "У всех так или только у меня? 😂"
+    }
+
+  ]
+
+};
+
+
+function generateIdea() {
+
+  const niche = document.getElementById("niche").value;
+
+  const nicheIdeas = ideas[niche];
+
+  const randomIdea =
+    nicheIdeas[Math.floor(Math.random() * nicheIdeas.length)];
+
+
+  document.getElementById("ideaTitle").innerText =
+    randomIdea.title;
+
+  document.getElementById("hook").innerText =
+    randomIdea.hook;
+
+  document.getElementById("shots").innerText =
+    randomIdea.shots;
+
+  document.getElementById("videoText").innerText =
+    randomIdea.text;
+
+  document.getElementById("caption").innerText =
+    randomIdea.caption;
+
+
+  const result = document.getElementById("result");
+
+  result.style.display = "block";
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+</script>
+
+</body>
+</html>
