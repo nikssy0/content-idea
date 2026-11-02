@@ -399,3 +399,703 @@ padding:0;
 }
 </style>
 </head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="logo" href="#">creator <span>hub ♡</span></a>
+
+    <nav class="navlinks">
+      <a href="#features">Возможности</a>
+      <a href="#ideas">Генератор идей</a>
+      <a href="#ai">AI для блогеров</a>
+      <a href="#knowledge">База знаний</a>
+    </nav>
+
+    <a class="btn" href="#ideas">Найти идею ↗</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+
+    <div>
+      <span class="eyebrow">✦ ТВОЯ ТВОРЧЕСКАЯ ТОЧКА ОПОРЫ</span>
+
+      <h1>
+        Не знаешь,<br>
+        что снять <em>сегодня?</em>
+      </h1>
+
+      <p>
+        Creator Hub помогает блогерам находить идеи,
+        придумывать сценарии и создавать контент,
+        который хочется смотреть.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#ideas">Подобрать идею ✨</a>
+        <a class="btn secondary" href="#features">Изучить платформу</a>
+      </div>
+
+      <p class="hero-note">
+        ♡ Меньше мучительных раздумий — больше вдохновения.
+      </p>
+    </div>
+
+    <div class="visual">
+      <div class="orb"></div>
+
+      <div class="floating float-one">
+        ✦ идеи на каждый день
+      </div>
+
+      <div class="idea-card">
+        <div class="card-top">
+          <span>ТВОЯ ИДЕЯ ДНЯ</span>
+          <span class="spark">✧</span>
+        </div>
+
+        <h3>Маленькие радости моей недели</h3>
+
+        <p>
+          Сними короткую подборку из 5–7 моментов,
+          которые сделали обычные дни чуточку лучше.
+        </p>
+
+        <div class="mini-tags">
+          <span class="tag">Lifestyle</span>
+          <span class="tag">Reels</span>
+          <span class="tag">Без сложного монтажа</span>
+        </div>
+      </div>
+
+      <div class="floating float-two">
+        ♡ твой контент — твои правила
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="features">
+  <div class="wrap">
+
+    <div class="section-head">
+      <span class="eyebrow">CREATOR HUB ДЛЯ ТЕБЯ</span>
+      <h2>Всё для контента — в одном месте</h2>
+      <p>
+        Инструменты и подсказки, которые помогают
+        пройти путь от идеи до готовой публикации.
+      </p>
+    </div>
+
+    <div class="features">
+
+      <article class="feature">
+        <div class="feature-icon">💡</div>
+        <h3>Идеи для контента</h3>
+        <p>Подборки тем для Reels, TikTok, Shorts и постов.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">🎀</div>
+        <h3>Оформление профиля</h3>
+        <p>Подсказки по шапке профиля, визуалу и стилю.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-помощник</h3>
+        <p>Промпты и инструкции для работы блогера с нейросетями.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">✍️</div>
+        <h3>Сценарии и тексты</h3>
+        <p>Заголовки, хуки, подписи и структура ролика.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">📚</div>
+        <h3>База знаний</h3>
+        <p>Полезные материалы о съёмке, монтаже и развитии блога.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">♡</div>
+        <h3>Творческая система</h3>
+        <p>Собирай идеи и находи собственный стиль.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="generator-section" id="ideas">
+  <div class="wrap">
+
+    <div class="section-head">
+      <span class="eyebrow">ТВОЁ ВДОХНОВЕНИЕ НА СЕГОДНЯ</span>
+      <h2>Что будем снимать?</h2>
+      <p>
+        Выбери площадку, тематику и формат —
+        получи идеи для следующей публикации.
+      </p>
+    </div>
+
+    <div class="generator">
+
+      <div class="filters">
+
+        <div>
+          <label for="platform">Площадка</label>
+          <select id="platform">
+            <option>Instagram Reels</option>
+            <option>TikTok</option>
+            <option>YouTube Shorts</option>
+            <option>Пост / карусель</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="niche">Тематика блога</label>
+          <select id="niche">
+            <option value="lifestyle">Lifestyle</option>
+            <option value="beauty">Beauty</option>
+            <option value="books">Книги</option>
+            <option value="fashion">Мода и стиль</option>
+            <option value="travel">Путешествия</option>
+            <option value="any">Микс тематик</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="format">Формат</label>
+          <select id="format">
+            <option value="any">Любой формат</option>
+            <option value="talk">Разговорное видео</option>
+            <option value="aesthetic">Эстетичная подборка</option>
+            <option value="trend">Тренд / переход</option>
+            <option value="carousel">Карусель / список</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="generate-row">
+        <small>✦ Генерируй новые идеи сколько угодно</small>
+
+        <button class="btn" id="generate">
+          Сгенерировать идеи ✨
+        </button>
+      </div>
+
+      <div class="results" id="results" aria-live="polite">
+
+        <article class="result">
+          <span class="number">ИДЕЯ 01</span>
+          <h3>5 мелочей, которые делают мой день лучше</h3>
+          <p>
+            <b>Хук:</b> «Я стала замечать, как много счастья
+            прячется в мелочах…»
+          </p>
+          <button class="copy" type="button">
+            Скопировать идею ↗
+          </button>
+        </article>
+
+        <article class="result">
+          <span class="number">ИДЕЯ 02</span>
+          <h3>Мой маленький ритуал вдохновения</h3>
+          <p>
+            <b>Хук:</b> «Когда совсем нет идей,
+            я делаю вот что…»
+          </p>
+          <button class="copy" type="button">
+            Скопировать идею ↗
+          </button>
+        </article>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="ai">
+  <div class="wrap">
+
+    <div class="ai-band">
+      <div>
+        <h2>
+          Подружись с AI — и освободи время для творчества
+        </h2>
+
+        <p>
+          Готовые запросы и понятные инструкции помогут
+          придумывать темы, писать сценарии, составлять
+          контент-планы и находить новые форматы.
+        </p>
+      </div>
+
+      <a class="btn" href="#knowledge">
+        Скоро в Creator Hub ↗
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="knowledge">
+  <div class="wrap">
+
+    <div class="section-head">
+      <span class="eyebrow">РАСТИ И ПРОБУЙ НОВОЕ</span>
+      <h2>Твоя база знаний</h2>
+      <p>
+        Начни с простых шагов и постепенно
+        прокачивай навыки создания контента.
+      </p>
+    </div>
+
+    <div class="articles">
+
+      <article class="article">
+        <div class="article-icon">✧</div>
+        <h3>Как оформить профиль, чтобы он запоминался</h3>
+        <p>
+          Разберём шапку профиля, аватар,
+          визуальную систему и первые впечатления.
+        </p>
+        <span>Материал готовится →</span>
+      </article>
+
+      <article class="article">
+        <div class="article-icon">🎬</div>
+        <h3>Как придумать сценарий короткого видео</h3>
+        <p>
+          Простая структура: цепляющее начало,
+          развитие идеи и понятный финал.
+        </p>
+        <span>Материал готовится →</span>
+      </article>
+
+      <article class="article">
+        <div class="article-icon">🤍</div>
+        <h3>Как не потерять вдохновение</h3>
+        <p>
+          Способы собирать идеи заранее и не
+          зависеть от творческого настроения.
+        </p>
+        <span>Материал готовится →</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+
+    <div class="cta">
+      <h2>Твой блог начинается с идеи ♡</h2>
+
+      <p>
+        Не жди идеального момента.
+        Давай создадим что-нибудь интересное уже сегодня.
+      </p>
+
+      <a class="btn" href="#ideas">
+        Найти свою идею ✨
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap footer-inner">
+    <a class="logo" href="#">
+      creator <span>hub ♡</span>
+    </a>
+
+    <span>
+      Пространство для идей, творчества и роста.
+    </span>
+
+    <span>© 2026 Creator Hub</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">
+  Идея скопирована ♡
+</div>
+
+<style>
+.ai-band {
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:25px;
+  padding:32px;
+  border-radius:25px;
+  background:#302b45;
+  color:#fff;
+}
+
+.ai-band h2 {
+  font-size:29px;
+  margin:0 0 10px;
+}
+
+.ai-band p {
+  color:#d5d0e3;
+  margin:0;
+  max-width:650px;
+  font-size:14px;
+}
+
+.ai-band .btn {
+  background:#b5a2ff;
+  color:#28243a;
+  box-shadow:none;
+}
+
+.articles {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+
+.article {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:22px;
+}
+
+.article-icon {font-size:25px}
+
+.article h3 {
+  font-size:17px;
+  margin:13px 0 8px;
+}
+
+.article p {
+  font-size:13px;
+  color:var(--muted);
+  margin:0 0 15px;
+}
+
+.article span {
+  font-size:12px;
+  font-weight:800;
+  color:var(--purple-dark);
+}
+
+.cta {
+  padding:55px 25px;
+  text-align:center;
+  background:linear-gradient(135deg,#eee8ff,#f9f5ff);
+  border:1px solid var(--line);
+  border-radius:28px;
+}
+
+.cta h2 {
+  font-size:clamp(28px,4vw,40px);
+  margin:0 0 12px;
+}
+
+.cta p {
+  color:var(--muted);
+  margin:0 0 22px;
+}
+
+footer {
+  padding:32px 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+  border-top:1px solid var(--line);
+  padding-top:23px;
+}
+
+.toast {
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#302b45;
+  color:#fff;
+  padding:11px 17px;
+  border-radius:12px;
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:20;
+}
+
+.toast.show {opacity:1}
+
+@media(max-width:800px) {
+  .navlinks {display:none}
+  .hero-grid {grid-template-columns:1fr;gap:15px}
+  .hero {padding:55px 0 35px}
+  .visual {min-height:330px}
+  .features {grid-template-columns:repeat(2,1fr)}
+  .ai-band {grid-template-columns:1fr}
+  .articles {grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:560px) {
+  .wrap {width:calc(100% - 28px)}
+  .nav {height:65px}
+  .nav>.btn {padding:10px 13px;font-size:12px}
+  .logo {font-size:19px}
+  h1 {font-size:42px}
+  .hero p {font-size:15px}
+  .visual {min-height:300px}
+  .orb {width:260px;height:260px}
+  .idea-card {padding:20px}
+  .float-one {right:-3px;top:15px}
+  .float-two {left:-3px;bottom:15px}
+  section {padding:48px 0}
+  .features,.articles,.results {grid-template-columns:1fr}
+  .generator {padding:18px}
+  .filters {grid-template-columns:1fr}
+  .generate-row {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .generate-row .btn {width:100%}
+  .ai-band {padding:25px}
+  .footer-inner {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+
+<script>
+const library = {
+
+lifestyle: [
+["Маленькие радости моей недели",
+"«Кажется, счастье чаще всего выглядит вот так…» Собери 5–7 коротких кадров из обычной недели.",
+"aesthetic"],
+
+["Один день без спешки",
+"«Сегодня я решила никуда не торопиться». Покажи утро, любимые дела и уютный вечер.",
+"talk"],
+
+["Что всегда поднимает мне настроение",
+"«Если день не задался, меня спасают эти мелочи». Поделись личной подборкой.",
+"any"],
+
+["Обычный момент, который хочется запомнить",
+"«Оставлю это здесь, чтобы не забыть». Сними красивую короткую зарисовку дня.",
+"trend"],
+
+["Мой уютный вечер за 30 секунд",
+"«Идеальный вечер для меня — это…» Покажи детали и атмосферу.",
+"aesthetic"]
+],
+
+beauty: [
+["Макияж, который меняет настроение",
+"«Иногда достаточно немного цвета, чтобы почувствовать себя иначе». Покажи этапы и результат.",
+"talk"],
+
+["Один продукт — несколько способов",
+"«Проверим, на что он способен». Покажи разные варианты использования любимого продукта.",
+"any"],
+
+["Мой макияж на каждый день",
+"«Когда хочется выглядеть собранно, но без лишних усилий». Сними короткий туториал.",
+"aesthetic"],
+
+["Повторяю макияж с референса",
+"«Получится ли повторить этот образ?» Покажи референс, процесс и результат.",
+"trend"]
+],
+
+books: [
+["Книга, которую я хотела бы прочитать впервые ещё раз",
+"«Хочу снова испытать эти эмоции». Расскажи без спойлеров, чем зацепила история.",
+"talk"],
+
+["Мой книжный moodboard",
+"«Если бы эта книга была настроением…» Подбери кадры, цвета и музыку под историю.",
+"aesthetic"],
+
+["Три книги под разное настроение",
+"«Не знаешь, что почитать? Вот три варианта». Дай короткую рекомендацию каждой.",
+"carousel"]
+],
+
+fashion: [
+["Один предмет — три образа",
+"«Покажу, как одна вещь меняет настроение образа». Сделай три быстрых перехода.",
+"trend"],
+
+["Детали моего сегодняшнего образа",
+"«Собрала образ из вещей, которые люблю». Покажи фактуры, аксессуары и силуэт.",
+"aesthetic"],
+
+["Цветовая палитра недели",
+"«На этой неделе меня вдохновляют эти оттенки». Собери одежду и детали в одну подборку.",
+"carousel"]
+],
+
+travel: [
+["Место, куда хочется вернуться",
+"«Есть места, которые остаются с тобой». Собери любимые кадры и расскажи, чем оно запомнилось.",
+"aesthetic"],
+
+["Мини-маршрут для красивой прогулки",
+"«Сохраняй идею для выходного». Покажи несколько точек и атмосферу.",
+"carousel"],
+
+["Путешествие глазами деталей",
+"«Не только достопримечательности создают воспоминания». Сними улицы, кофе и красивые детали.",
+"aesthetic"]
+]
+
+};
+
+library.any = [
+...library.lifestyle.slice(0,2),
+...library.beauty.slice(0,1),
+...library.books.slice(0,1),
+...library.travel.slice(0,1)
+];
+
+const formatNames = {
+talk:"Разговорное видео",
+aesthetic:"Эстетичная подборка",
+trend:"Тренд / переход",
+carousel:"Карусель / список"
+};
+
+const platform = document.getElementById("platform");
+const niche = document.getElementById("niche");
+const format = document.getElementById("format");
+const results = document.getElementById("results");
+const toast = document.getElementById("toast");
+
+let lastIdeas = [];
+
+function pickIdeas() {
+
+  const chosen = library[niche.value] || library.any;
+
+  const filtered = format.value === "any"
+    ? chosen
+    : chosen.filter(item => item[2] === format.value);
+
+  const pool = filtered.length ? filtered : chosen;
+
+  const shuffled = [...pool].sort(
+    () => Math.random() - 0.5
+  );
+
+  return shuffled.slice(0,2);
+}
+
+function renderIdeas() {
+
+  lastIdeas = pickIdeas();
+
+  results.innerHTML = lastIdeas.map((item,index) => `
+    <article class="result">
+
+      <span class="number">
+        ИДЕЯ 0${index+1} · ${platform.value}
+      </span>
+
+      <h3>${item[0]}</h3>
+
+      <p>
+        <b>Хук и сценарий:</b> ${item[1]}
+      </p>
+
+      <p>
+        <b>Формат:</b>
+        ${formatNames[item[2]] || "На твой выбор"}
+      </p>
+
+      <button
+        class="copy"
+        type="button"
+        data-index="${index}">
+        Скопировать идею ↗
+      </button>
+
+    </article>
+  `).join("");
+
+}
+
+document
+.getElementById("generate")
+.addEventListener("click", renderIdeas);
+
+results.addEventListener("click", async event => {
+
+  const button = event.target.closest(".copy");
+
+  if(!button) return;
+
+  const item = lastIdeas[Number(button.dataset.index)];
+
+  if(!item) return;
+
+  const text =
+    `${item[0]}\n${item[1]}\nФормат: ${formatNames[item[2]] || "На твой выбор"}`;
+
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch(error) {
+
+    const area = document.createElement("textarea");
+
+    area.value = text;
+
+    document.body.appendChild(area);
+
+    area.select();
+
+    document.execCommand("copy");
+
+    area.remove();
+  }
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  },1800);
+
+});
+
+</script>
+
+</body>
+</html>
