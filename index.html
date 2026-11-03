@@ -406,11 +406,13 @@ padding:0;
     <a class="logo" href="#">creator <span>hub ♡</span></a>
 
     <nav class="navlinks">
-      <a href="#features">Возможности</a>
-      <a href="#ideas">Генератор идей</a>
-      <a href="#ai">AI для блогеров</a>
-      <a href="#knowledge">База знаний</a>
-    </nav>
+  <a href="#features">Возможности</a>
+  <a href="#ideas">Идеи</a>
+  <a href="#weekly">Тренды недели</a>
+  <a href="#carousels">Карусели</a>
+  <a href="#ai">AI-помощник</a>
+  <a href="#planner">Контент-план</a>
+</nav>
 
     <a class="btn" href="#ideas">Найти идею ↗</a>
   </div>
@@ -1584,3 +1586,122 @@ h1 em {
   border: 1px solid #C5A66A !important;
 }
 </style>
+// ИЗБРАННОЕ
+let favorites = JSON.parse(localStorage.getItem("creatorFavorites") || "[]");
+
+function renderFavorites() {
+  const box = document.getElementById("favorites-list");
+
+  if (!favorites.length) {
+    box.textContent = "Пока здесь пусто. Сохрани понравившуюся идею ♡";
+    return;
+  }
+
+  box.innerHTML = favorites.map((item, index) => `
+    <div style="padding:14px;margin-bottom:10px;background:#f5f2ff;border-radius:12px">
+      <b>${item}</b>
+      <button class="remove-favorite" data-index="${index}"
+        style="float:right;border:0;background:none;color:#8065d9;cursor:pointer">
+        Удалить
+      </button>
+    </div>
+  `).join("");
+}
+
+document.addEventListener("click", event => {
+  const save = event.target.closest(".save-idea");
+
+  if (save) {
+    const name = save.dataset.title;
+
+    if (!favorites.includes(name)) {
+      favorites.push(name);
+      localStorage.setItem("creatorFavorites", JSON.stringify(favorites));
+    }
+
+    renderFavorites();
+    save.textContent = "✓ Сохранено";
+  }
+
+  const remove = event.target.closest(".remove-favorite");
+
+  if (remove) {
+    favorites.splice(Number(remove.dataset.index), 1);
+    localStorage.setItem("creatorFavorites", JSON.stringify(favorites));
+    renderFavorites();
+  }
+
+  const carousel = event.target.closest(".carousel-copy");
+
+  if (carousel) {
+    navigator.clipboard.writeText(
+      carousel.dataset.content.replaceAll("|", "\n")
+    ).then(() => alert("Структура карусели скопирована! 💜"))
+      .catch(() => alert("Не удалось скопировать. Попробуй ещё раз."));
+  }
+});
+
+// КОНТЕНТ-ПЛАН
+let plans = JSON.parse(localStorage.getItem("creatorPlans") || "[]");
+
+function renderPlans() {
+  const box = document.getElementById("plan-list");
+
+  if (!plans.length) {
+    box.textContent = "Твой контент-план пока пуст.";
+    return;
+  }
+
+  box.innerHTML = plans.map((item, index) => `
+    <div style="padding:15px;margin-bottom:10px;background:#f5f2ff;border-radius:14px">
+      <label>
+        <input type="checkbox" data-index="${index}"
+          class="plan-done" ${item.done ? "checked" : ""}>
+        ${item.done ? "✓ " : ""}${item.title}
+      </label>
+      <p style="color:#777287;font-size:13px">${item.date || "Дата не выбрана"}</p>
+      <button class="delete-plan" data-index="${index}"
+        style="border:0;background:none;color:#8065d9;cursor:pointer">
+        Удалить
+      </button>
+    </div>
+  `).join("");
+}
+
+document.getElementById("add-plan").addEventListener("click", () => {
+  const title = document.getElementById("plan-title").value.trim();
+  const date = document.getElementById("plan-date").value;
+
+  if (!title) {
+    alert("Напиши название публикации!");
+    return;
+  }
+
+  plans.push({ title, date, done: false });
+
+  localStorage.setItem("creatorPlans", JSON.stringify(plans));
+
+  document.getElementById("plan-title").value = "";
+  renderPlans();
+});
+
+document.getElementById("plan-list").addEventListener("change", event => {
+  if (event.target.classList.contains("plan-done")) {
+    plans[Number(event.target.dataset.index)].done = event.target.checked;
+    localStorage.setItem("creatorPlans", JSON.stringify(plans));
+    renderPlans();
+  }
+});
+
+document.getElementById("plan-list").addEventListener("click", event => {
+  const button = event.target.closest(".delete-plan");
+
+  if (button) {
+    plans.splice(Number(button.dataset.index), 1);
+    localStorage.setItem("creatorPlans", JSON.stringify(plans));
+    renderPlans();
+  }
+});
+
+renderFavorites();
+renderPlans();
