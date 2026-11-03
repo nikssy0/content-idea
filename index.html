@@ -698,7 +698,135 @@ padding:0;
   </div>
 </section>
 
+<!-- ТРЕНДЫ НЕДЕЛИ -->
+<section id="weekly">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">🔥 CREATOR HUB WEEKLY</span>
+      <h2>Что снять на этой неделе?</h2>
+      <p>Подборка идей, которые помогут тебе спланировать контент.</p>
+    </div>
 
+    <div class="features">
+      <article class="feature">
+        <div class="feature-icon">🎬</div>
+        <h3>POV: один день из жизни</h3>
+        <p>Покажи свой день через короткие красивые кадры.</p>
+        <label><input type="checkbox" class="done"> Я сняла это видео</label>
+        <button class="btn secondary save-idea" data-title="POV: один день из жизни">♡ В избранное</button>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">✨</div>
+        <h3>До и после</h3>
+        <p>Покажи преображение, результат или процесс изменений.</p>
+        <label><input type="checkbox" class="done"> Я сняла это видео</label>
+        <button class="btn secondary save-idea" data-title="До и после">♡ В избранное</button>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>3 вещи, которые я поняла</h3>
+        <p>Поделись личными наблюдениями и опытом.</p>
+        <label><input type="checkbox" class="done"> Я сняла это видео</label>
+        <button class="btn secondary save-idea" data-title="3 вещи, которые я поняла">♡ В избранное</button>
+      </article>
+    </div>
+
+    <p style="text-align:center;color:#777287;margin-top:20px">
+      Новая подборка публикуется каждое воскресенье вечером.
+    </p>
+  </div>
+</section>
+
+<!-- КАРУСЕЛИ -->
+<section id="carousels">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">🎠 INSTAGRAM DESIGN</span>
+      <h2>Карусели для Instagram</h2>
+      <p>Выбирай тему, копируй структуру и создавай красивые публикации.</p>
+    </div>
+
+    <div class="features">
+      <article class="feature">
+        <div class="feature-icon">💜</div>
+        <h3>Как начать вести блог</h3>
+        <p>7 слайдов: от выбора ниши до первой публикации.</p>
+        <button class="btn secondary carousel-copy"
+          data-content="Как начать вести блог|Выбери свою тему|Определи аудиторию|Оформи профиль|Составь контент-план|Подготовь первые публикации|Начни снимать|Сохрани и начни сегодня!">
+          Скопировать структуру
+        </button>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">📚</div>
+        <h3>5 ошибок начинающего блогера</h3>
+        <p>Обучающая карусель с полезными советами.</p>
+        <button class="btn secondary carousel-copy"
+          data-content="5 ошибок начинающего блогера|Нет чёткой темы|Нет понимания аудитории|Слишком долгое ожидание идеала|Отсутствие регулярности|Копирование чужого стиля|Что делать вместо этого|Сохрани себе!">
+          Скопировать структуру
+        </button>
+      </article>
+
+      <article class="feature">
+        <div class="feature-icon">🌷</div>
+        <h3>Знакомство с блогером</h3>
+        <p>Карусель, которая поможет рассказать о себе.</p>
+        <button class="btn secondary carousel-copy"
+          data-content="Давай знакомиться!|Кто я?|Чем занимаюсь?|О чём мой блог?|Что меня вдохновляет?|Что здесь будет полезного?|Буду рада знакомству!">
+          Скопировать структуру
+        </button>
+      </article>
+    </div>
+
+    <p style="text-align:center;color:#777287;margin-top:20px">
+      В дальнейшем здесь появятся скачиваемые дизайны и шаблоны Canva.
+    </p>
+  </div>
+</section>
+
+<!-- ИЗБРАННОЕ -->
+<section id="favorites">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">♡ МОЯ КОЛЛЕКЦИЯ</span>
+      <h2>Избранное</h2>
+      <p>Сохраняй идеи, к которым захочешь вернуться.</p>
+    </div>
+    <div class="generator" id="favorites-list">
+      Пока здесь пусто. Нажми «В избранное» возле понравившейся идеи.
+    </div>
+  </div>
+</section>
+
+<!-- КОНТЕНТ-ПЛАН -->
+<section id="planner">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">📅 МОЁ ПЛАНИРОВАНИЕ</span>
+      <h2>Мой контент-план</h2>
+      <p>Записывай публикации и отмечай выполненные задачи.</p>
+    </div>
+
+    <div class="generator">
+      <label for="plan-title">Что планируешь опубликовать?</label>
+      <input id="plan-title" type="text"
+        placeholder="Например: Reels про мой день"
+        style="width:100%;padding:14px;border:1px solid #e9e4f5;border-radius:12px;margin-bottom:12px">
+
+      <label for="plan-date">Дата публикации</label>
+      <input id="plan-date" type="date"
+        style="width:100%;padding:14px;border:1px solid #e9e4f5;border-radius:12px;margin-bottom:15px">
+
+      <button class="btn" id="add-plan">+ Добавить публикацию</button>
+
+      <div id="plan-list" style="margin-top:22px">
+        Твой контент-план пока пуст.
+      </div>
+    </div>
+  </div>
+</section>
 <section id="ai">
   <div class="wrap">
 
