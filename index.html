@@ -1730,7 +1730,7 @@ const authMessage = document.getElementById("authMessage");
 
 let authMode = "login";
 
-function openAuth(mode) {
+window.openAuth = function(mode) {
   authMode = mode;
   authModal.style.display = "flex";
 
