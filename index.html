@@ -1529,8 +1529,25 @@ footer {
   }
 }
 </style>
-</body>
-</html>
+
+<div id="authModal" style="display:none; position:fixed; inset:0; background:rgba(35,25,55,.65); z-index:99999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:white; padding:30px; border-radius:24px; width:100%; max-width:400px;">
+    <button id="closeAuth" type="button" style="float:right; border:0; background:none; font-size:24px; cursor:pointer;">×</button>
+
+    <h2 id="authTitle">Добро пожаловать ♡</h2>
+    <p id="authDescription">Войди в свой Creator Hub</p>
+
+    <form id="authForm">
+      <input id="authEmail" type="email" placeholder="Твоя почта" required style="width:100%;padding:13px;margin:10px 0;border:1px solid #e9e4f5;border-radius:12px;">
+
+      <input id="authPassword" type="password" placeholder="Пароль (минимум 8 символов)" minlength="8" required style="width:100%;padding:13px;margin:10px 0;border:1px solid #e9e4f5;border-radius:12px;">
+
+      <button class="btn" id="authSubmit" type="submit" style="width:100%;margin-top:15px;">Войти</button>
+    </form>
+
+    <p id="authMessage" aria-live="polite"></p>
+  </div>
+</div>
 
 <style>
 /* CREATOR HUB — GOLD DETAILS */
@@ -1601,9 +1618,10 @@ h1 em {
   border: 1px solid #C5A66A !important;
 }
 </style>
+
+<script>
 // ИЗБРАННОЕ
 let favorites = JSON.parse(localStorage.getItem("creatorFavorites") || "[]");
-
 function renderFavorites() {
   const box = document.getElementById("favorites-list");
 
@@ -1793,3 +1811,7 @@ document.getElementById("authForm").addEventListener("submit", async event => {
     authSubmit.disabled = false;
   }
 });
+</script>
+
+</body>
+</html>
