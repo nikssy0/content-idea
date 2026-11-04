@@ -1,6 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="ru">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  const SUPABASE_URL = 'https://bjhfdgoinrjghwmojwxk.supabase.co/rest/v1/';
+  const SUPABASE_KEY = 'sb_publishable_eOdsVKLuwMEv_9DkGEowuA_i532Ug13';
+
+  const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+</script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -414,7 +424,10 @@ padding:0;
   <a href="#planner">Контент-план</a>
 </nav>
 
-    <a class="btn" href="#ideas">Найти идею ↗</a>
+ <div class="auth-buttons">
+  <button class="btn secondary" id="loginBtn" type="button">Войти</button>
+  <button class="btn" id="signupBtn" type="button">Регистрация</button>
+</div>
   </div>
 </header>
 
@@ -1705,3 +1718,107 @@ document.getElementById("plan-list").addEventListener("click", event => {
 
 renderFavorites();
 renderPlans();
+// CREATOR HUB — АВТОРИЗАЦИЯ
+
+const authModal = document.getElementById("authModal");
+const authTitle = document.getElementById("authTitle");
+const authDescription = document.getElementById("authDescription");
+const authSubmit = document.getElementById("authSubmit");
+const authMessage = document.getElementById("authMessage");
+
+let authMode = "login";
+
+function openAuth(mode) {
+  authMode = mode;
+  authModal.style.display = "flex";
+
+  authTitle.textContent = mode === "signup"
+    ? "Создай свой аккаунт ♡"
+    : "С возвращением ♡";
+
+  authDescription.textContent = mode === "signup"
+    ? "Присоединяйся к Creator Hub"
+    : "Войди в свой Creator Hub";
+
+  authSubmit.textContent = mode === "signup"
+    ? "Зарегистрироваться"
+    : "Войти";
+
+  authMessage.textContent = "";
+}
+
+document.getElementById("loginBtn").addEventListener("click", () => {
+  openAuth("login");
+});
+
+document.getElementById("signupBtn").addEventListener("click", () => {
+  openAuth("signup");
+});
+
+document.getElementById("closeAuth").addEventListener("click", () => {
+  authModal.style.display = "none";
+});
+
+document.getElementById("authForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+
+  authSubmit.disabled = true;
+  authMessage.textContent = "Подожди немного...";
+
+  try {
+    let result;
+
+    if (authMode === "signup") {
+      result = await supabaseClient.auth.signUp({
+        email,
+        password
+      });
+    } else {
+      result = await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
+    }
+
+    if (result.error) throw result.error;
+
+    if (authMode === "signup" && !result.data.session) {
+      authMessage.textContent =
+        "Проверь почту и подтверди регистрацию ♡";
+    } else {
+      authMessage.textContent = "Добро пожаловать в Creator Hub! ♡";
+      setTimeout(() => {
+        authModal.style.display = "none";
+      }, 1500);
+    }
+
+  } catch (error) {
+    authMessage.textContent = "Ошибка: " + error.message;
+  } finally {
+    authSubmit.disabled = false;
+  }
+});
+</script>
+<div id="authModal" style="display:none; position:fixed; inset:0; background:rgba(35,25,55,.55); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:white; padding:30px; border-radius:24px; width:100%; max-width:400px;">
+    <button id="closeAuth" type="button" style="float:right; border:0; background:none; font-size:24px; cursor:pointer;">×</button>
+
+    <h2 id="authTitle">Добро пожаловать ♡</h2>
+    <p id="authDescription">Войди в свой Creator Hub</p>
+
+    <form id="authForm">
+      <input id="authEmail" type="email" placeholder="Твоя почта" required style="width:100%;padding:13px;margin:10px 0;border:1px solid #e9e4f5;border-radius:12px;">
+
+      <input id="authPassword" type="password" placeholder="Пароль (минимум 6 символов)" minlength="6" required style="width:100%;padding:13px;margin:10px 0;border:1px solid #e9e4f5;border-radius:12px;">
+
+      <button class="btn" id="authSubmit" type="submit" style="width:100%;margin-top:15px;">Войти</button>
+    </form>
+
+    <p id="authMessage" aria-live="polite"></p>
+  </div>
+</div>
+</body>
+</html>
