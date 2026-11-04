@@ -1,23 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="ru">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-  const SUPABASE_URL = 'https://bjhfdgoinrjghwmojwxk.supabase.co/rest/v1/';
-  const SUPABASE_KEY = 'sb_publishable_eOdsVKLuwMEv_9DkGEowuA_i532Ug13';
-
-  const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-</script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f8f6ff">
 <title>Creator Hub ♡ — твоя территория идей</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = 'https://bjhfdgoinrjghwmojwxk.supabase.co';
+const SUPABASE_KEY = 'ТВОЙ_PUBLISHABLE_KEY';
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
 
 <style>
 :root {
