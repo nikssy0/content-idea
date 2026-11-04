@@ -1730,7 +1730,7 @@ const authMessage = document.getElementById("authMessage");
 
 let authMode = "login";
 
-window.openAuth = function(mode) {
+function openAuth(mode) {
   authMode = mode;
   authModal.style.display = "flex";
 
@@ -1749,16 +1749,18 @@ window.openAuth = function(mode) {
   authMessage.textContent = "";
 }
 
-document.getElementById("loginBtn").addEventListener("click", () => {
-  openAuth("login");
-});
+document.getElementById("loginBtn").onclick = () => openAuth("login");
 
-document.getElementById("signupBtn").addEventListener("click", () => {
-  openAuth("signup");
-});
+document.getElementById("signupBtn").onclick = () => openAuth("signup");
 
-document.getElementById("closeAuth").addEventListener("click", () => {
+document.getElementById("closeAuth").onclick = () => {
   authModal.style.display = "none";
+};
+
+authModal.addEventListener("click", event => {
+  if (event.target === authModal) {
+    authModal.style.display = "none";
+  }
 });
 
 document.getElementById("authForm").addEventListener("submit", async event => {
@@ -1771,56 +1773,23 @@ document.getElementById("authForm").addEventListener("submit", async event => {
   authMessage.textContent = "Подожди немного...";
 
   try {
-    let result;
-
-    if (authMode === "signup") {
-      result = await supabaseClient.auth.signUp({
-        email,
-        password
-      });
-    } else {
-      result = await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
-    }
+    const result = authMode === "signup"
+      ? await supabaseClient.auth.signUp({ email, password })
+      : await supabaseClient.auth.signInWithPassword({ email, password });
 
     if (result.error) throw result.error;
 
     if (authMode === "signup" && !result.data.session) {
-      authMessage.textContent =
-        "Проверь почту и подтверди регистрацию ♡";
+      authMessage.textContent = "Проверь почту и подтверди регистрацию ♡";
     } else {
       authMessage.textContent = "Добро пожаловать в Creator Hub! ♡";
       setTimeout(() => {
         authModal.style.display = "none";
       }, 1500);
     }
-
   } catch (error) {
     authMessage.textContent = "Ошибка: " + error.message;
   } finally {
     authSubmit.disabled = false;
   }
 });
-</script>
-<div id="authModal" style="display:none; position:fixed; inset:0; background:rgba(35,25,55,.55); z-index:9999; align-items:center; justify-content:center; padding:20px;">
-  <div style="background:white; padding:30px; border-radius:24px; width:100%; max-width:400px;">
-    <button id="closeAuth" type="button" style="float:right; border:0; background:none; font-size:24px; cursor:pointer;">×</button>
-
-    <h2 id="authTitle">Добро пожаловать ♡</h2>
-    <p id="authDescription">Войди в свой Creator Hub</p>
-
-    <form id="authForm">
-      <input id="authEmail" type="email" placeholder="Твоя почта" required style="width:100%;padding:13px;margin:10px 0;border:1px solid #e9e4f5;border-radius:12px;">
-
-      <input id="authPassword" type="password" placeholder="Пароль (минимум 6 символов)" minlength="6" required style="width:100%;padding:13px;margin:10px 0;border:1px solid #e9e4f5;border-radius:12px;">
-
-      <button class="btn" id="authSubmit" type="submit" style="width:100%;margin-top:15px;">Войти</button>
-    </form>
-
-    <p id="authMessage" aria-live="polite"></p>
-  </div>
-</div>
-</body>
-</html>
